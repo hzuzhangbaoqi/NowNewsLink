@@ -63,3 +63,19 @@ https://m.toutiao.com/list/?tag=news_tech&ac=wap&count=20&format=json_raw&as=A12
 
 段子：http://3g.163.com/touch/jsonp/joke/chanListNews/T1419316284722/2/0-10.html?callback=joke0
 
+
+
+var express = require("express");
+var axios = require('axios');
+var app = express();
+var router = express.Router();
+
+router.get("/getrecommend", function (req, res) {
+  axios.get("http://3g.163.com/touch/jsonp/sy/recommend/0-9.html").then(function (data) {
+    res.json(data);
+    console.log(data);
+  })
+})
+app.use('/api',router);
+app.listen(8080);
+
